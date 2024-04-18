@@ -32,6 +32,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun dangNhaptaiKhoan() {
-        TODO("Not yet implemented")
+        val i = Intent(this, HomeTaskActivity::class.java)
+        startActivity(i)
     }
 }
