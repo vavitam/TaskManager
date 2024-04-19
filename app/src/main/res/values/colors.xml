@@ -6,6 +6,8 @@
     <color name="blue">#D7D9FA</color>
     <color name="darkBlue">#101BD5</color>
     <color name="green">#B2F2BB</color>
-    <color name="darkGreen">#1A401D</color>
+    <color name="darkGreen">#225C27</color>
+    <color name="yellow">#FFDE59</color>
+    <color name="darkYellow">#DDBE44</color>
     <!--    #295F2D-->
 </resources>
