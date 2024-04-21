@@ -82,7 +82,7 @@
             android:layout_width="33dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:textSize="20dp"
+            android:textSize="17dp"
             android:textColor="@color/darkGreen"
             android:text="Giới tính:" />
 
@@ -91,7 +91,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:textSize="20dp"
+            android:textSize="17dp"
             android:textColor="@color/darkGreen"
             android:text="Nam"/>
 
@@ -99,7 +99,7 @@
             android:id="@+id/rBtnNu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="17dp"
             android:layout_weight="1"
             android:textColor="@color/darkGreen"
             android:text="Nữ" />
@@ -108,7 +108,7 @@
             android:id="@+id/rBtnKhac"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="17dp"
             android:layout_weight="1"
             android:textColor="@color/darkGreen"
             android:text="Khác"/>
