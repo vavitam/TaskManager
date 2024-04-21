@@ -21,13 +21,23 @@
         android:paddingTop="20dp"
         android:paddingBottom="20dp"/>
 
-    <ImageView
-        android:id="@+id/imageEditAvt"
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivUserEdit"
+        android:layout_width="156dp"
+        android:layout_height="156dp"
+        app:shapeAppearanceOverlay="@style/ImageViewCircleOverlay"
+        android:src="@color/darkGreen"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Upload image"
+        android:textColor="@color/darkGreen"
+        android:textSize="17dp"
         android:layout_gravity="center"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="10dp"
-        app:srcCompat="@drawable/icon_account" />
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -54,27 +64,27 @@
         android:paddingLeft="20dp"
         android:background="@drawable/edt_box_stroke"/>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Ngày sinh:"
-        android:layout_marginLeft="30dp"
-        android:textSize="17dp"
-        android:textColor="@color/darkGreen"
-        android:layout_marginBottom="5dp"/>
-    <EditText
-        android:id="@+id/edtEditDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        android:layout_marginLeft="30dp"
-        android:layout_marginRight="30dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:paddingRight="10dp"
-        android:paddingLeft="20dp"
-        android:background="@drawable/edt_box_stroke"/>
+<!--    <TextView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="Ngày sinh:"-->
+<!--        android:layout_marginLeft="30dp"-->
+<!--        android:textSize="17dp"-->
+<!--        android:textColor="@color/darkGreen"-->
+<!--        android:layout_marginBottom="5dp"/>-->
+<!--    <EditText-->
+<!--        android:id="@+id/edtEditDate"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:ems="10"-->
+<!--        android:inputType="date"-->
+<!--        android:layout_marginLeft="30dp"-->
+<!--        android:layout_marginRight="30dp"-->
+<!--        android:paddingTop="10dp"-->
+<!--        android:paddingBottom="10dp"-->
+<!--        android:paddingRight="10dp"-->
+<!--        android:paddingLeft="20dp"-->
+<!--        android:background="@drawable/edt_box_stroke"/>-->
 
     <RadioGroup
         android:id="@+id/radioGroupEdit"
