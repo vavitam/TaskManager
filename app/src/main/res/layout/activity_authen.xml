@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/nen"
     android:orientation="vertical"
-    tools:context=".AuthenActivity">
+    tools:context=".auth.AuthenActivity">
 
     <ImageView
         android:id="@+id/imageLogo"

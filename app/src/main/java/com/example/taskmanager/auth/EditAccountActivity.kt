@@ -1,4 +1,4 @@
-package com.example.taskmanager
+package com.example.taskmanager.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,14 +6,16 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.taskmanager.databinding.ActivityAuthenBinding
+import com.example.taskmanager.AccountActivity
+import com.example.taskmanager.R
+import com.example.taskmanager.databinding.ActivityEditAccountBinding
 
-class AuthenActivity : AppCompatActivity() {
-    lateinit var binding: ActivityAuthenBinding
+class EditAccountActivity : AppCompatActivity() {
+    lateinit var binding: ActivityEditAccountBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityAuthenBinding.inflate(layoutInflater)
+        binding = ActivityEditAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -21,15 +23,13 @@ class AuthenActivity : AppCompatActivity() {
             insets
         }
 
-        binding.btnDangNhap.setOnClickListener {
-            val i = Intent(this, SignInActivity::class.java)
-            startActivity(i)
+        binding.btnSave.setOnClickListener {
+            luuThayDoi()
         }
+    }
 
-        binding.btnDangKy.setOnClickListener {
-            val i = Intent(this, RegisterActivity::class.java)
-            startActivity(i)
-        }
-
+    private fun luuThayDoi() {
+        val i = Intent(this, AccountActivity::class.java)
+        startActivity(i)
     }
 }

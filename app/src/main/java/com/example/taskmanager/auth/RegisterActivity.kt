@@ -1,4 +1,4 @@
-package com.example.taskmanager
+package com.example.taskmanager.auth
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,14 +6,15 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.taskmanager.databinding.ActivitySignInBinding
+import com.example.taskmanager.R
+import com.example.taskmanager.databinding.ActivityRegisterBinding
 
-class SignInActivity : AppCompatActivity() {
-    lateinit var binding: ActivitySignInBinding
+class RegisterActivity : AppCompatActivity() {
+    lateinit var binding: ActivityRegisterBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivitySignInBinding.inflate(layoutInflater)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
@@ -21,18 +22,17 @@ class SignInActivity : AppCompatActivity() {
             insets
         }
 
-        binding.btnDangNhap.setOnClickListener {
-            dangNhaptaiKhoan()
+        binding.btnDangKy.setOnClickListener {
+            dangKyTaiKhoan()
         }
 
-        binding.tvDangKy.setOnClickListener {
-            val i = Intent(this, RegisterActivity::class.java)
+        binding.tvDangNhap.setOnClickListener {
+            val i = Intent(this, SignInActivity::class.java)
             startActivity(i)
         }
     }
 
-    private fun dangNhaptaiKhoan() {
-        val i = Intent(this, HomeTaskActivity::class.java)
-        startActivity(i)
+    private fun dangKyTaiKhoan() {
+        TODO("Not yet implemented")
     }
 }

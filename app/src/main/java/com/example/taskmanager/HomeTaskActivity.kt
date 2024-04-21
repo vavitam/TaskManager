@@ -1,5 +1,6 @@
 package com.example.taskmanager
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -53,7 +54,8 @@ class HomeTaskActivity : AppCompatActivity() {
     }
 
     private fun taiKhoan() {
-        TODO("Not yet implemented")
+        val i = Intent(this,AccountActivity::class.java)
+        startActivity(i)
     }
 
 }

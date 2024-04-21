@@ -1,10 +1,12 @@
 package com.example.taskmanager
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.taskmanager.auth.EditAccountActivity
 import com.example.taskmanager.databinding.ActivityAccountBinding
 
 class AccountActivity : AppCompatActivity() {
@@ -18,6 +20,11 @@ class AccountActivity : AppCompatActivity() {
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
+        }
+
+        binding.tvEditAccount.setOnClickListener {
+            val i = Intent(this, EditAccountActivity::class.java)
+            startActivity(i)
         }
     }
 }
