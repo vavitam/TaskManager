@@ -76,6 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingLeft="30dp"
+            android:textStyle="italic"
             android:text="Tìm hiểu thêm" />
 
         <TextView
@@ -85,6 +86,7 @@
             android:layout_weight="1"
             android:gravity="end"
             android:paddingRight="30dp"
+            android:textStyle="italic"
             android:text="Trợ giúp?" />
     </LinearLayout>
 </LinearLayout>

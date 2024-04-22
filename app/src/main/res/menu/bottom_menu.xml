@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/btmNavTask"
+        android:icon="@drawable/icon_task_alt"
+        android:title="Task" />
+
+    <item
+        android:id="@+id/btmNavTime"
+        android:icon="@drawable/icon_time"
+        android:title="Time" />
+
+    <item
+        android:id="@+id/btmNavGroup"
+        android:icon="@drawable/icon_groups"
+        android:title="Group" />
+</menu>

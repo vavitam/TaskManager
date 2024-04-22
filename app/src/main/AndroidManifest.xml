@@ -19,7 +19,7 @@
             android:name=".AccountActivity"
             android:exported="false" />
         <activity
-            android:name=".HomeTaskActivity"
+            android:name=".HomeActivity"
             android:exported="false" />
         <activity
             android:name=".auth.RegisterActivity"

@@ -7,8 +7,11 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.taskmanager.databinding.ActivityHomeTaskBinding
+import com.example.taskmanager.fragment.GroupFragment
+import com.example.taskmanager.fragment.TaskFragment
+import com.example.taskmanager.fragment.TimeFragment
 
-class HomeTaskActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity() {
     lateinit var binding: ActivityHomeTaskBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -35,7 +38,47 @@ class HomeTaskActivity : AppCompatActivity() {
             }
             true
         }
+
+        // Xử lí menu bottom navigation
+        val timeFrag = TimeFragment()
+        val groupFrag = GroupFragment()
+        val taskFrag = TaskFragment()
+
+        supportFragmentManager.beginTransaction().apply {
+            replace(R.id.frameLayout,taskFrag)
+            commit()
+        }
+
+        binding.bottomNavView.setOnItemSelectedListener { item ->
+            when(item.itemId) {
+                R.id.btmNavTime -> {
+                    supportFragmentManager.beginTransaction().apply {
+                        replace(R.id.frameLayout,timeFrag)
+                        commit()
+                    }
+                }
+
+                R.id.btmNavGroup -> {
+                    supportFragmentManager.beginTransaction().apply {
+                        replace(R.id.frameLayout,groupFrag)
+                        commit()
+                    }
+                }
+
+                R.id.btmNavTask -> {
+                    supportFragmentManager.beginTransaction().apply {
+                        replace(R.id.frameLayout,taskFrag)
+                        commit()
+                    }
+                }
+
+                else -> {
+                }
+            }
+            true
+        }
     }
+
 
     private fun caiDat() {
         TODO("Not yet implemented")

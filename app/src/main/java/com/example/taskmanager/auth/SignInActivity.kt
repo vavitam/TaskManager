@@ -6,7 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.taskmanager.HomeTaskActivity
+import com.example.taskmanager.HomeActivity
 import com.example.taskmanager.R
 import com.example.taskmanager.databinding.ActivitySignInBinding
 
@@ -34,7 +34,7 @@ class SignInActivity : AppCompatActivity() {
     }
 
     private fun dangNhaptaiKhoan() {
-        val i = Intent(this, HomeTaskActivity::class.java)
+        val i = Intent(this, HomeActivity::class.java)
         startActivity(i)
     }
 }
