@@ -6,17 +6,17 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.taskmanager.databinding.ActivityHomeTaskBinding
+import com.example.taskmanager.databinding.ActivityHomeBinding
 import com.example.taskmanager.fragment.GroupFragment
 import com.example.taskmanager.fragment.TaskFragment
 import com.example.taskmanager.fragment.TimeFragment
 
 class HomeActivity : AppCompatActivity() {
-    lateinit var binding: ActivityHomeTaskBinding
+    lateinit var binding: ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        binding = ActivityHomeTaskBinding.inflate(layoutInflater)
+        binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
