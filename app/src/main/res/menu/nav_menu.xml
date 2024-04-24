@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/navAccount"
             android:title="Tài khoản"
             android:icon="@drawable/icon_account" />
         <item
+            android:id="@+id/navTask"
+            android:title="Trang Chủ"
+            android:icon="@drawable/icon_task" />
+        <item
             android:id="@+id/navImport"
             android:title="Quan trọng"
             android:icon="@drawable/icon_star" />
-        <item
-            android:id="@+id/navTask"
-            android:title="Nhiệm vụ"
-            android:icon="@drawable/icon_task" />
         <item
             android:id="@+id/navFeed"
             android:title="Phản hồi"
@@ -22,4 +25,15 @@
             android:title="Cài đặt"
             android:icon="@drawable/icon_settings"/>
     </group>
+
+    <item
+        android:title="">
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/icon_exit"
+                android:title="Logout"/>
+        </menu>
+
+    </item>
 </menu>

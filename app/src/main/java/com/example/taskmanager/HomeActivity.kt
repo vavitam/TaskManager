@@ -3,9 +3,11 @@ package com.example.taskmanager
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.fragment.app.Fragment
 import com.example.taskmanager.databinding.ActivityHomeBinding
 import com.example.taskmanager.fragment.GroupFragment
 import com.example.taskmanager.fragment.TaskFragment
@@ -25,75 +27,36 @@ class HomeActivity : AppCompatActivity() {
         }
 
         // Sử dụng màu cho icon
-        binding.navLeftMenu.itemIconTintList = null
+//        binding.navLeftMenu.itemIconTintList = null
 
-        // Xủ lý menu navigation
-        binding.navLeftMenu.setNavigationItemSelectedListener {
-            when(it.itemId) {
-                R.id.navAccount -> taiKhoan()
-                R.id.navImport -> nhiemVuQuanTrong()
-                R.id.navTask -> nhiemVu()
-                R.id.navFeed -> phanHoi()
-                R.id.navSetting -> caiDat()
+        val toggle = ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.open_nav, R.string.close_nav)
+        binding.drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
+
+        if (savedInstanceState == null) {
+            supportFragmentManager.beginTransaction().replace(R.id.frameLayout, TaskFragment()).commit()
+            binding.navView.setCheckedItem(R.id.navTask)
+        }
+
+        replaceFragment(TaskFragment())
+
+        binding.bottomNavigationView.background = null
+        binding.bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.btmNavTask -> replaceFragment(TaskFragment())
+                R.id.btmNavTime -> replaceFragment(TimeFragment())
+                R.id.btmNavGroup -> replaceFragment(GroupFragment())
             }
             true
         }
 
-        // Xử lí menu bottom navigation
-        val timeFrag = TimeFragment()
-        val groupFrag = GroupFragment()
-        val taskFrag = TaskFragment()
-
-        supportFragmentManager.beginTransaction().apply {
-            replace(R.id.frameLayout,taskFrag)
-            commit()
-        }
-
-        binding.bottomNavView.setOnItemSelectedListener { item ->
-            when(item.itemId) {
-                R.id.btmNavTime -> {
-                    supportFragmentManager.beginTransaction().apply {
-                        replace(R.id.frameLayout,timeFrag)
-                        commit()
-                    }
-                }
-
-                R.id.btmNavGroup -> {
-                    supportFragmentManager.beginTransaction().apply {
-                        replace(R.id.frameLayout,groupFrag)
-                        commit()
-                    }
-                }
-
-                R.id.btmNavTask -> {
-                    supportFragmentManager.beginTransaction().apply {
-                        replace(R.id.frameLayout,taskFrag)
-                        commit()
-                    }
-                }
-
-                else -> {
-                }
-            }
-            true
-        }
     }
 
-
-    private fun caiDat() {
-        TODO("Not yet implemented")
-    }
-
-    private fun phanHoi() {
-        TODO("Not yet implemented")
-    }
-
-    private fun nhiemVu() {
-        TODO("Not yet implemented")
-    }
-
-    private fun nhiemVuQuanTrong() {
-        TODO("Not yet implemented")
+    private fun replaceFragment(fragment: Fragment) {
+        val fragmentManager = supportFragmentManager
+        val fragmentTransaction = fragmentManager.beginTransaction()
+        fragmentTransaction.replace(R.id.frameLayout, fragment)
+        fragmentTransaction.commit()
     }
 
     private fun taiKhoan() {
