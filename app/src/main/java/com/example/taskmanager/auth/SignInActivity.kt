@@ -2,6 +2,7 @@ package com.example.taskmanager.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
@@ -9,9 +10,11 @@ import androidx.core.view.WindowInsetsCompat
 import com.example.taskmanager.HomeActivity
 import com.example.taskmanager.R
 import com.example.taskmanager.databinding.ActivitySignInBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class SignInActivity : AppCompatActivity() {
     lateinit var binding: ActivitySignInBinding
+    lateinit var firebaseAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -30,6 +33,25 @@ class SignInActivity : AppCompatActivity() {
         binding.tvDangKy.setOnClickListener {
             val i = Intent(this, RegisterActivity::class.java)
             startActivity(i)
+        }
+
+        firebaseAuth = FirebaseAuth.getInstance()
+        binding.btnDangNhap.setOnClickListener {
+            val email = binding.edtEmail.text.toString()
+            val pass = binding.edtPassword.text.toString()
+
+            if (email.isNotEmpty() && pass.isNotEmpty()) {
+                firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
+                    if (it.isSuccessful) {
+                        val i = Intent(this, HomeActivity::class.java)
+                        startActivity(i)
+                    } else {
+                        Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                Toast.makeText(this, "Empty Fields Are not Allowed", Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

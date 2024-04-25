@@ -35,23 +35,23 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"/>
 
-            <com.google.android.material.bottomappbar.BottomAppBar
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="bottom"
-                android:background="@color/white"
-                app:fabCradleMargin="10dp"
-                app:fabCradleRoundedCornerRadius="50dp"
-                tools:ignore="BottomAppBar">
+<!--            <com.google.android.material.bottomappbar.BottomAppBar-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:layout_gravity="bottom"-->
+<!--                android:background="@color/white"-->
+<!--                app:fabCradleMargin="10dp"-->
+<!--                app:fabCradleRoundedCornerRadius="50dp"-->
+<!--                tools:ignore="BottomAppBar">-->
 
-                <com.google.android.material.bottomnavigation.BottomNavigationView
-                    android:id="@+id/bottomNavigationView"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:background="@android:color/transparent"
-                    app:labelVisibilityMode="labeled"
-                    app:menu="@menu/bottom_menu"/>
-            </com.google.android.material.bottomappbar.BottomAppBar>
+<!--                <com.google.android.material.bottomnavigation.BottomNavigationView-->
+<!--                    android:id="@+id/bottomNavigationView"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    android:background="@android:color/transparent"-->
+<!--                    app:labelVisibilityMode="labeled"-->
+<!--                    app:menu="@menu/bottom_menu"/>-->
+<!--            </com.google.android.material.bottomappbar.BottomAppBar>-->
 
         </LinearLayout>
 
@@ -62,7 +62,7 @@
             android:layout_gravity="start"
             app:headerLayout="@layout/nav_header"
             app:menu="@menu/nav_menu"
-            app:itemIconTint="@color/lavender"
-            app:itemTextColor="@color/lavender"/>
+            app:itemIconTint="@color/darkGreen"
+            app:itemTextColor="@color/darkGreen"/>
     </androidx.drawerlayout.widget.DrawerLayout>
 </LinearLayout>

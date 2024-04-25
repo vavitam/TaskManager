@@ -12,6 +12,17 @@
             android:id="@+id/navTask"
             android:title="Trang Chủ"
             android:icon="@drawable/icon_task" />
+
+        <item
+            android:id="@+id/navTime"
+            android:title="Lịch"
+            android:icon="@drawable/icon_time" />
+
+        <item
+            android:id="@+id/navGroup"
+            android:title="Nhóm"
+            android:icon="@drawable/icon_groups" />
+
         <item
             android:id="@+id/navImport"
             android:title="Quan trọng"

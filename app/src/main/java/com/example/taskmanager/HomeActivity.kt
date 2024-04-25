@@ -2,9 +2,11 @@ package com.example.taskmanager
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.GravityCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
@@ -12,8 +14,9 @@ import com.example.taskmanager.databinding.ActivityHomeBinding
 import com.example.taskmanager.fragment.GroupFragment
 import com.example.taskmanager.fragment.TaskFragment
 import com.example.taskmanager.fragment.TimeFragment
+import com.google.android.material.navigation.NavigationView
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
     lateinit var binding: ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,9 +32,11 @@ class HomeActivity : AppCompatActivity() {
         // Sử dụng màu cho icon
 //        binding.navLeftMenu.itemIconTintList = null
 
+        binding.navView.setNavigationItemSelectedListener(this);
         val toggle = ActionBarDrawerToggle(this, binding.drawerLayout, binding.toolbar, R.string.open_nav, R.string.close_nav)
         binding.drawerLayout.addDrawerListener(toggle)
         toggle.syncState()
+
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction().replace(R.id.frameLayout, TaskFragment()).commit()
@@ -40,15 +45,15 @@ class HomeActivity : AppCompatActivity() {
 
         replaceFragment(TaskFragment())
 
-        binding.bottomNavigationView.background = null
-        binding.bottomNavigationView.setOnItemSelectedListener { item ->
-            when (item.itemId) {
-                R.id.btmNavTask -> replaceFragment(TaskFragment())
-                R.id.btmNavTime -> replaceFragment(TimeFragment())
-                R.id.btmNavGroup -> replaceFragment(GroupFragment())
-            }
-            true
-        }
+//        binding.bottomNavigationView.background = null
+//        binding.bottomNavigationView.setOnItemSelectedListener { item ->
+//            when (item.itemId) {
+//                R.id.btmNavTask -> replaceFragment(TaskFragment())
+//                R.id.btmNavTime -> replaceFragment(TimeFragment())
+//                R.id.btmNavGroup -> replaceFragment(GroupFragment())
+//            }
+//            true
+//        }
 
     }
 
@@ -64,4 +69,13 @@ class HomeActivity : AppCompatActivity() {
         startActivity(i)
     }
 
+    override fun onNavigationItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.navTask -> replaceFragment(TaskFragment())
+            R.id.navTime -> replaceFragment(TimeFragment())
+            R.id.navGroup -> replaceFragment(GroupFragment())
+        }
+        binding.drawerLayout.closeDrawer(GravityCompat.START)
+        return true
+    }
 }
