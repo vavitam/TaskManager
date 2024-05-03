@@ -36,7 +36,6 @@ class ChangePassActivity : AppCompatActivity() {
 
     private fun thayDoi() {
         val newPass = binding.edtNewPass.text.toString()
-        val oldPass = binding.edtOldPass.text.toString()
 
         binding.progressBar.visibility = View.VISIBLE
         binding.linBackground.visibility = View.GONE
