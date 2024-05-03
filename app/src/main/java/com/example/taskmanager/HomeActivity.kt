@@ -11,7 +11,6 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.taskmanager.databinding.ActivityHomeBinding
-import com.example.taskmanager.fragment.AccountActivity
 import com.example.taskmanager.fragment.GroupFragment
 import com.example.taskmanager.fragment.TaskFragment
 import com.example.taskmanager.fragment.TimeFragment
@@ -75,6 +74,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             R.id.navTask -> replaceFragment(TaskFragment())
             R.id.navTime -> replaceFragment(TimeFragment())
             R.id.navGroup -> replaceFragment(GroupFragment())
+            R.id.navAccount -> taiKhoan()
         }
         binding.drawerLayout.closeDrawer(GravityCompat.START)
         return true

@@ -1,12 +1,12 @@
-package com.example.taskmanager.fragment
+package com.example.taskmanager
 
 import android.content.Intent
 import android.os.Bundle
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.taskmanager.R
 import com.example.taskmanager.auth.EditAccountActivity
 import com.example.taskmanager.databinding.ActivityAccountBinding
 
@@ -27,5 +27,11 @@ class AccountActivity : AppCompatActivity() {
             val i = Intent(this, EditAccountActivity::class.java)
             startActivity(i)
         }
+
+        binding.imageAvtAccount.setOnClickListener {
+            val i = Intent(this, HomeActivity::class.java)
+            startActivity(i)
+        }
+
     }
 }
