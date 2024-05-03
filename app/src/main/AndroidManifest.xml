@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TaskManager"
         tools:targetApi="31">
         <activity
+            android:name=".auth.ChangePassActivity"
+            android:exported="false" />
+        <activity
             android:name=".auth.EditAccountActivity"
             android:exported="false" />
         <activity

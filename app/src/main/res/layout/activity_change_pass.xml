@@ -5,9 +5,9 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@drawable/background_1"
-    tools:context=".auth.EditAccountActivity">
+    tools:context=".auth.ChangePassActivity">
+
 
     <ProgressBar
         android:id="@+id/progressBar"
@@ -45,7 +45,7 @@
                 android:id="@+id/tvTittle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Chỉnh sửa thông tin"
+                android:text="Thay đổi mật khẩu"
                 android:gravity="center"
                 android:textSize="30dp"
                 android:textStyle="bold"
@@ -55,65 +55,23 @@
 
         </LinearLayout>
 
-        <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivUserEdit"
-            android:layout_width="156dp"
-            android:layout_height="156dp"
-            app:shapeAppearanceOverlay="@style/ImageViewCircleOverlay"
-            android:src="@color/darkGreen"
-            android:layout_gravity="center"/>
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Upload image"
-            android:textColor="@color/darkGreen"
-            android:textSize="17dp"
-            android:layout_gravity="center"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tên tài khoản:"
+            android:text="Mật khẩu mới:"
             android:layout_marginLeft="30dp"
             android:textSize="17dp"
             android:textColor="@color/darkGreen"
             android:layout_marginBottom="5dp"/>
 
         <EditText
-            android:id="@+id/edtEditName"
+            android:id="@+id/edtNewPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="text"
-            android:text="Văn Viết Tâm"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_marginBottom="10dp"
-            android:paddingTop="10dp"
-            android:paddingBottom="10dp"
-            android:paddingRight="10dp"
-            android:paddingLeft="20dp"
-            android:background="@drawable/edt_box_stroke"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Số điện thoại:"
-            android:layout_marginLeft="30dp"
-            android:textSize="17dp"
-            android:textColor="@color/darkGreen"
-            android:layout_marginBottom="5dp"/>
-
-        <EditText
-            android:id="@+id/edtEditPhone"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="phone"
-            android:text="0345131235"
+            android:inputType="textPassword"
+            android:text=""
+            android:hint="Nhập ..."
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
             android:layout_marginBottom="10dp"
@@ -124,39 +82,22 @@
             android:background="@drawable/edt_box_stroke"/>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/btnSave"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_gravity="center"
+            android:background="@drawable/btn_box_stroke">
 
             <TextView
-                android:id="@+id/tvEditPassWorld"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginLeft="30dp"
-                android:text="Đổi mật khẩu?"
-                android:textStyle="italic"
-                android:layout_gravity="center"/>
-
-            <LinearLayout
-                android:id="@+id/btnSave"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:background="@drawable/btn_box_stroke">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/blue"
-                    android:paddingLeft="20dp"
-                    android:paddingRight="20dp"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    android:textSize="17dp"
-                    android:text="Lưu thay đổi"/>
-            </LinearLayout>
+                android:textColor="@color/blue"
+                android:paddingLeft="20dp"
+                android:paddingRight="20dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:textSize="17dp"
+                android:text="Lưu thay đổi"/>
         </LinearLayout>
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

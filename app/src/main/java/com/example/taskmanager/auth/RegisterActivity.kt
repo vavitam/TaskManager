@@ -3,8 +3,11 @@ package com.example.taskmanager.auth
 import android.content.Intent
 import android.nfc.Tag
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -76,6 +79,7 @@ class RegisterActivity : AppCompatActivity() {
                                 .addOnCompleteListener {
                                     Toast.makeText(this,"Successfully added", Toast.LENGTH_SHORT).show()
                                 }
+
                             dangNhap()
                         } else {
                             Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()

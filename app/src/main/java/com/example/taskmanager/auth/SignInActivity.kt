@@ -2,6 +2,7 @@ package com.example.taskmanager.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
@@ -43,12 +44,23 @@ class SignInActivity : AppCompatActivity() {
             if (email.isNotEmpty() && pass.isNotEmpty()) {
                 firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
+                        binding.progressBar.visibility = View.VISIBLE
+                        binding.linBackground.visibility = View.GONE
+
                         val i = Intent(this, HomeActivity::class.java)
                         startActivity(i)
+
+                        binding.progressBar.visibility = View.GONE
+                        binding.linBackground.visibility = View.VISIBLE
                     } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
                     }
                 }
+                    .addOnFailureListener {
+                        binding.tvNotice.visibility = View.VISIBLE
+                        binding.tvNotce2.visibility = View.GONE
+                        Toast.makeText(this, "Sign up Failed", Toast.LENGTH_SHORT).show()
+                    }
             } else {
                 Toast.makeText(this, "Empty Fields Are not Allowed", Toast.LENGTH_SHORT).show()
             }

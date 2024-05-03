@@ -1,11 +1,15 @@
 package com.example.taskmanager.auth
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.taskmanager.AccountActivity
 import com.example.taskmanager.R
 import com.example.taskmanager.databinding.ActivityEditAccountBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -27,6 +31,55 @@ class EditAccountActivity : AppCompatActivity() {
             insets
         }
 
+        setData()
+
+        binding.btnSave.setOnClickListener {
+            updateData()
+        }
+
+        binding.imageBtnLeft.setOnClickListener {
+            chuyenLai()
+        }
+
+        binding.tvEditPassWorld.setOnClickListener {
+            val i = Intent(this, ChangePassActivity::class.java)
+            startActivity(i)
+        }
+    }
+
+    private fun chuyenLai() {
+        val i = Intent(this, AccountActivity::class.java)
+        startActivity(i)
+    }
+
+    private fun updateData() {
+        binding.linBackground.visibility = View.GONE
+        binding.progressBar.visibility = View.VISIBLE
+
+        val sName = binding.edtEditName.text.toString()
+        val sPhone = binding.edtEditPhone.text.toString()
+        val sMail = FirebaseAuth.getInstance().currentUser!!.email
+
+        val updateMap = mapOf(
+            "email" to sMail,
+            "name" to sName,
+            "phone" to sPhone
+        )
+
+        val userID = FirebaseAuth.getInstance().currentUser!!.uid
+        db.collection("users").document(userID).update(updateMap)
+
+        binding.linBackground.visibility = View.VISIBLE
+        binding.progressBar.visibility = View.GONE
+
+        chuyenLai()
+        Toast.makeText(this, "Successfully", Toast.LENGTH_SHORT).show()
+    }
+
+    private fun setData() {
+        binding.linBackground.visibility = View.GONE
+        binding.progressBar.visibility = View.VISIBLE
+
         val userID = FirebaseAuth.getInstance().currentUser!!.uid
         val ref = db.collection("users").document(userID)
         ref.get().addOnSuccessListener {
@@ -36,6 +89,9 @@ class EditAccountActivity : AppCompatActivity() {
 
                 binding.edtEditName.setText(name)
                 binding.edtEditPhone.setText(phone)
+
+                binding.linBackground.visibility = View.VISIBLE
+                binding.progressBar.visibility = View.GONE
             }
         }
             .addOnFailureListener {
