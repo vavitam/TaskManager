@@ -16,7 +16,7 @@
             android:name=".auth.EditAccountActivity"
             android:exported="false" />
         <activity
-            android:name=".AccountActivity"
+            android:name=".fragment.AccountActivity"
             android:exported="false" />
         <activity
             android:name=".HomeActivity"

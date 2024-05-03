@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.fragment.app.Fragment
 import com.example.taskmanager.databinding.ActivityHomeBinding
+import com.example.taskmanager.fragment.AccountActivity
 import com.example.taskmanager.fragment.GroupFragment
 import com.example.taskmanager.fragment.TaskFragment
 import com.example.taskmanager.fragment.TimeFragment
@@ -65,7 +66,7 @@ class HomeActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     }
 
     private fun taiKhoan() {
-        val i = Intent(this,AccountActivity::class.java)
+        val i = Intent(this, AccountActivity::class.java)
         startActivity(i)
     }
 

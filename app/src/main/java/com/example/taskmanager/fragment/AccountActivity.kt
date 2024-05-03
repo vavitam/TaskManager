@@ -1,4 +1,4 @@
-package com.example.taskmanager
+package com.example.taskmanager.fragment
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,6 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.example.taskmanager.R
 import com.example.taskmanager.auth.EditAccountActivity
 import com.example.taskmanager.databinding.ActivityAccountBinding
 

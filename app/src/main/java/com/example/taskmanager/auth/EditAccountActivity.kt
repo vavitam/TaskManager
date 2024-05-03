@@ -6,7 +6,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import com.example.taskmanager.AccountActivity
+import com.example.taskmanager.fragment.AccountActivity
 import com.example.taskmanager.R
 import com.example.taskmanager.databinding.ActivityEditAccountBinding
 
