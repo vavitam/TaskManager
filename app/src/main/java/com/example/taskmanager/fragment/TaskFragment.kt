@@ -8,5 +8,10 @@ import android.view.ViewGroup
 import com.example.taskmanager.R
 
 class TaskFragment : Fragment(R.layout.fragment_task) {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        arguments?.let {
+        }
 
+    }
 }
