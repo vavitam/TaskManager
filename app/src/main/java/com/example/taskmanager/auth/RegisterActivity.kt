@@ -57,10 +57,6 @@ class RegisterActivity : AppCompatActivity() {
             val phone = binding.edtPhone.text.toString()
             val pass = binding.edtPassword.text.toString()
             val confirmPass = binding.edtRePassword.text.toString()
-            val uid = FirebaseAuth.getInstance().currentUser!!.uid
-
-            binding.progressBar.visibility = View.VISIBLE
-            binding.linearBackground.visibility = View.GONE
 
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(this, "Email nhập sai", Toast.LENGTH_SHORT).show()
@@ -77,52 +73,106 @@ class RegisterActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
+//            if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
+//                if (pass == confirmPass) {
+//                    val uID = FirebaseAuth.getInstance().currentUser!!.uid
+//                    val storageRef = FirebaseStorage.getInstance().reference
+//                    val imageRef = storageRef.child("images_user/${uID}.jpg")
+//                    val uploadTask = imageRef.putFile(selectedImageUri!!)
+//                    uploadTask.addOnSuccessListener {
+//                        imageRef.downloadUrl.addOnSuccessListener {downloadUrl ->
+////                            saveUserToFirestore(pass, email, phone, name, uid, downloadUrl.toString())
+//                            firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {task ->
+//                                if (task.isSuccessful) {
+//                                    val user = hashMapOf(
+//                                        "email" to email,
+//                                        "name" to name,
+//                                        "phone" to phone,
+//                                        "image" to downloadUrl
+//                                    )
+//
+//                                    db.collection("users").document(uID).set(user)
+//                                        .addOnCompleteListener {
+//                                            Toast.makeText(this,"Đăng ký thành công", Toast.LENGTH_SHORT).show()
+//                                        }
+//
+//                                    dangNhap()
+//                                } else {
+//                                    Log.e("REGISTER_ERROR", "Error creating user", task.exception)
+//                                    Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+//                                }
+//                            }
+//                        }
+//                    } .addOnFailureListener {
+//                        Toast.makeText(this, "Hinh anh that bai", Toast.LENGTH_SHORT).show()
+//                    }
+//
+//                } else {
+//                    Toast.makeText(this, "Mật khẩu không khớp", Toast.LENGTH_SHORT).show()
+//                }
+//            } else {
+//                Toast.makeText(this, "Chưa điền đầy đủ thông tin", Toast.LENGTH_SHORT).show()
+//            }
+
             if (email.isNotEmpty() && pass.isNotEmpty() && confirmPass.isNotEmpty()) {
                 if (pass == confirmPass) {
-                    val storageRef = FirebaseStorage.getInstance().reference
-                    val imageRef = storageRef.child("images_user/${uid}.jpg")
-                    val uploadTask = imageRef.putFile(selectedImageUri!!)
-                    uploadTask.addOnSuccessListener {
-                        imageRef.downloadUrl.addOnSuccessListener {downloadUrl ->
-                            saveUserToFirestore(pass, email, phone, name, uid, downloadUrl.toString())
+                    firebaseAuth.createUserWithEmailAndPassword(email, pass)
+                        .addOnCompleteListener { task ->
+                            val uID = FirebaseAuth.getInstance().currentUser!!.uid
+                            val storageRef = FirebaseStorage.getInstance().reference
+                            val imageRef = storageRef.child("images_user/${uID}.jpg")
+                            val uploadTask = imageRef.putFile(selectedImageUri!!)
+                            uploadTask.addOnSuccessListener {
+                                imageRef.downloadUrl.addOnSuccessListener { downloadUrl ->
+                                    if (task.isSuccessful) {
+                                        val user = hashMapOf(
+                                            "email" to email,
+                                            "name" to name,
+                                            "phone" to phone,
+                                            "image" to downloadUrl
+                                        )
+                                        db.collection("users").document(uID).set(user)
+                                            .addOnCompleteListener {
+                                                Toast.makeText(
+                                                    this,
+                                                    "Đăng ký thành công",
+                                                    Toast.LENGTH_SHORT
+                                                ).show()
+                                            }
+                                        dangNhap()
+                                    } else {
+                                        Log.e(
+                                            "REGISTER_ERROR",
+                                            "Error creating user",
+                                            task.exception
+                                        )
+                                        Toast.makeText(
+                                            this,
+                                            "Error: ${task.exception?.message}",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
+                                    }
+                                }
+                            }.addOnFailureListener {
+                                Toast.makeText(this, "Hinh anh that bai", Toast.LENGTH_SHORT).show()
+                            }
                         }
-                    } .addOnFailureListener {
-                        Toast.makeText(this, "Hinh anh that bai", Toast.LENGTH_SHORT).show()
-                    }
-
                 } else {
                     Toast.makeText(this, "Mật khẩu không khớp", Toast.LENGTH_SHORT).show()
                 }
             } else {
                 Toast.makeText(this, "Chưa điền đầy đủ thông tin", Toast.LENGTH_SHORT).show()
             }
-
-            binding.progressBar.visibility = View.GONE
-            binding.linearBackground.visibility = View.VISIBLE
+            binding.progressBar.visibility = View.VISIBLE
+            binding.linearBackground.visibility = View.GONE
         }
+
+        binding.progressBar.visibility = View.GONE
+        binding.linearBackground.visibility = View.VISIBLE
     }
 
     private fun saveUserToFirestore(pass: String, email: String, phone: String, name: String, uid: String, downloadUrl: String) {
-        firebaseAuth.createUserWithEmailAndPassword(email, pass).addOnCompleteListener {task ->
-            if (task.isSuccessful) {
-                val user = hashMapOf(
-                    "email" to email,
-                    "name" to name,
-                    "phone" to phone,
-                    "image" to downloadUrl
-                )
 
-                db.collection("users").document(uid).set(user)
-                    .addOnCompleteListener {
-                        Toast.makeText(this,"Đăng ký thành công", Toast.LENGTH_SHORT).show()
-                    }
-
-                dangNhap()
-            } else {
-                Log.e("REGISTER_ERROR", "Error creating user", task.exception)
-                Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
-            }
-        }
     }
 
     private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) {

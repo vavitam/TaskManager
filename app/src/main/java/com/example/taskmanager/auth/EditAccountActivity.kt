@@ -2,13 +2,14 @@ package com.example.taskmanager.auth
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
-import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.bumptech.glide.Glide
 import com.example.taskmanager.AccountActivity
 import com.example.taskmanager.R
 import com.example.taskmanager.databinding.ActivityEditAccountBinding
@@ -86,9 +87,13 @@ class EditAccountActivity : AppCompatActivity() {
             if (it != null) {
                 val name = it.data?.get("name")?.toString()
                 val phone = it.data?.get("phone")?.toString()
+                val image = it.data?.get("image")?.toString()
 
                 binding.edtEditName.setText(name)
                 binding.edtEditPhone.setText(phone)
+                Glide.with(this)
+                    .load(image)
+                    .into(binding.imageUserAccount)
 
                 binding.linBackground.visibility = View.VISIBLE
                 binding.progressBar.visibility = View.GONE

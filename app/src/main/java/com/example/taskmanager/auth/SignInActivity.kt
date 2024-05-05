@@ -44,14 +44,9 @@ class SignInActivity : AppCompatActivity() {
             if (email.isNotEmpty() && pass.isNotEmpty()) {
                 firebaseAuth.signInWithEmailAndPassword(email, pass).addOnCompleteListener {
                     if (it.isSuccessful) {
-                        binding.progressBar.visibility = View.VISIBLE
-                        binding.linBackground.visibility = View.GONE
 
                         val i = Intent(this, HomeActivity::class.java)
                         startActivity(i)
-
-                        binding.progressBar.visibility = View.GONE
-                        binding.linBackground.visibility = View.VISIBLE
                     } else {
                         Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
                     }
@@ -64,7 +59,13 @@ class SignInActivity : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "Empty Fields Are not Allowed", Toast.LENGTH_SHORT).show()
             }
+
+            binding.progressBar.visibility = View.VISIBLE
+            binding.linBackground.visibility = View.GONE
         }
+
+        binding.progressBar.visibility = View.GONE
+        binding.linBackground.visibility = View.VISIBLE
     }
 
     private fun dangNhaptaiKhoan() {
