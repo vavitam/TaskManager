@@ -1,11 +1,13 @@
 package com.example.taskmanager.auth
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
@@ -19,6 +21,7 @@ import com.google.firebase.ktx.Firebase
 
 class EditAccountActivity : AppCompatActivity() {
     lateinit var binding: ActivityEditAccountBinding
+    private var selectedImageUri: Uri? = null
 
     private var db = Firebase.firestore
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,11 +49,26 @@ class EditAccountActivity : AppCompatActivity() {
             val i = Intent(this, ChangePassActivity::class.java)
             startActivity(i)
         }
+
+        binding.imageUserAccount.setOnClickListener {
+            pickImage.launch("image/*")
+        }
+    }
+
+    private val pickImage = registerForActivityResult(ActivityResultContracts.GetContent()) {
+        if (it != null) {
+            binding.imageUserAccount.setImageURI(it)
+            selectedImageUri = it
+        }
     }
 
     private fun chuyenLai() {
         val i = Intent(this, AccountActivity::class.java)
         startActivity(i)
+    }
+
+    private fun imageUrl() {
+
     }
 
     private fun updateData() {
