@@ -56,11 +56,11 @@
         </LinearLayout>
 
         <com.google.android.material.imageview.ShapeableImageView
-            android:id="@+id/ivUserEdit"
+            android:id="@+id/imageUserAccount"
             android:layout_width="156dp"
             android:layout_height="156dp"
             app:shapeAppearanceOverlay="@style/ImageViewCircleOverlay"
-            android:src="@color/darkGreen"
+            android:background="@drawable/background_1"
             android:layout_gravity="center"/>
 
         <TextView
